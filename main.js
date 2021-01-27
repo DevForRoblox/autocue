@@ -18,12 +18,17 @@ function smoothScroll(target, duration) {
     requestAnimationFrame(loop);
 }
 
-
-start.onclick = function() {
   let start = document.getElementById("start")
   let input = document.getElementById("input")
   let text = document.getElementById("text")
+  let title = document.getElementById("title")
   let scrollDuration = document.getElementById("scrollDuration")
+
+  input.value = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu pretium quam, nec faucibus enim. Maecenas tincidunt porttitor mi a placerat. Quisque eu feugiat diam, non consectetur felis. Nam a justo purus. Integer augue mauris, lacinia id ipsum in, convallis iaculis arcu. In sed nunc ac urna malesuada mollis nec vitae turpis. Aliquam erat volutpat. Nam quis ligula nisl. Fusce elementum, nulla dapibus faucibus pulvinar, orci purus commodo lectus, mattis maximus neque dui sit amet lectus. In faucibus faucibus ligula, sed consectetur magna aliquam eu. Nulla facilisi. Nam et dui lobortis, faucibus felis et, luctus tortor. Phasellus justo odio, interdum."
+  
+  scrollDuration.value = 10
+
+start.onclick = function() {
 
   let timer = document.createElement("span")
   timer.innerHTML = 10
@@ -46,7 +51,9 @@ start.onclick = function() {
     }
   }, 1000);
 
-
+  if(!scrollDuration.value > 0) {
+    scrollDuration.value = 10
+  }
 
   start.parentElement.append(message)
   start.parentElement.append(document.createElement("br"))
@@ -54,6 +61,7 @@ start.onclick = function() {
   
   text.innerHTML = input.value
   scrollDuration.style.display = "none"
+  title.remove()
   input.remove()
   start.remove()
 
